@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jekuga Brandon's Portfolio</title>
+  <script src="https://cdn.jsdelivr.net/npm/react@18/umd/react.development.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@babel/standalone@7/babel.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    // Navbar Component with Hamburger Menu
+    function Navbar() {
+      const [isOpen, setIsOpen] = React.useState(false);
+
+      return (
+        <nav className="bg-blue-800 text-white p-4 fixed w-full top-0 z-10">
+          <div className="flex justify-between items-center max-w-7xl mx-auto">
+            <h1 className="text-2xl font-bold">Jekuga Brandon</h1>
+            <button className="md:hidden" onClick={() => setIsOpen(!isOpen)}>
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7" />
+              </svg>
+            </button>
+            <div className={`md:flex space-x-6 ${isOpen ? 'block absolute top-16 left-0 bg-blue-800 w-full p-4' : 'hidden md:block'}`}>
+              {['Home', 'Projects', 'Blog', 'About'].map((item) => (
+                <a
+                  key={item}
+                  href={`#${item.toLowerCase()}`}
+                  className="block mt-2 md:mt-0 hover:text-teal-300 transition-colors duration-300"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {item}
+                </a>
+              ))}
+            </div>
+          </div>
+        </nav>
+      );
+    }
+
+    // ProjectCard Component with Animation
+    function ProjectCard({ title, description, link, iframeSrc }) {
+      const [isHovered, setIsHovered] = React.useState(false);
+
+      return (
+        <div
+          className={`bg-white p-6 rounded-lg shadow-lg transform transition-all duration-300 ${isHovered ? 'scale-105 shadow-xl' : ''}`}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+        >
+          <h3 className="text-xl font-semibold text-blue-800">{title}</h3>
+          <p className="mt-2 text-gray-600">{description}</p>
+          {iframeSrc && (
+            <iframe
+              src={iframeSrc}
+              className="w-full h-64 mt-4 rounded"
+              title={title}
+              allowFullScreen
+            />
+          )}
+          <a
+            href={link}
+            className="mt-4 inline-block text-blue-600 font-semibold hover:underline transition-colors duration-300"
+          >
+            View Project
+          </a>
+        </div>
+      );
+    }
+
+    // BlogPost Component
+    function BlogPost({ title, excerpt }) {
+      return (
+        <div className="bg-white p-6 rounded-lg shadow-md">
+          <h3 className="text-xl font-semibold text-blue-800">{title}</h3>
+          <p className="mt-2 text-gray-600">{excerpt}</p>
+          <button className="mt-4 text-blue-600 font-semibold hover:underline">Read More</button>
+        </div>
+      );
+    }
+
+    // Main App Component
+    function App() {
+      return (
+        <div className="min-h-screen bg-gray-50 pt-16">
+          <Navbar />
+
+          {/* Home Section */}
+          <section id="home" className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-600 to-teal-400 text-white">
+            <div className="text-center px-4 animate-fade-in">
+              <h2 className="text-4xl sm:text-5xl font-extrabold">Hi, I'm Jekuga Brandon</h2>
+              <p className="mt-4 text-lg sm:text-xl">Software Engineering Student & Data Scientist</p>
+              <p className="mt-2 text-base sm:text-lg max-w-2xl mx-auto">
+                Driving insights in healthcare through data analytics and machine learning.
+              </p>
+              <a
+                href="#projects"
+                className="mt-6 inline-block bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-200 transition-all duration-300"
+              >
+                View Projects
+              </a>
+            </div>
+          </section>
+
+          {/* Projects Section */}
+          <section id="projects" className="py-20 bg-white">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <h2 className="text-3xl font-bold text-center text-blue-800 mb-10">My Projects</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <ProjectCard
+                  title="Predictive Patient Readmission Model"
+                  description="Machine learning model to predict hospital readmissions using healthcare data."
+                  link="https://github.com/yourusername/readmission-model"
+                  iframeSrc="https://app.powerbi.com/view?r=your-embed-url" // Replace with your PowerBI embed URL
+                />
+                <ProjectCard
+                  title="Disease Diagnosis with Deep Learning"
+                  description="CNN model for diagnosing diseases from medical images."
+                  link="https://github.com/yourusername/disease-diagnosis"
+                />
+                {/* Add more projects here */}
+              </div>
+            </div>
+          </section>
+
+          {/* Blog Section */}
+          <section id="blog" className="py-20 bg-gray-100">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <h2 className="text-3xl font-bold text-center text-blue-800 mb-10">Blog & Insights</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                <BlogPost
+                  title="Trends in Healthcare Analytics"
+                  excerpt="Exploring how data analytics is transforming patient care."
+                />
+                <BlogPost
+                  title="Building ML Models for Healthcare"
+                  excerpt="A guide to creating impactful machine learning solutions."
+                />
+                {/* Add more blog posts here */}
+              </div>
+            </div>
+          </section>
+
+          {/* About Section */}
+          <section id="about" className="py-20 bg-white">
+            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+              <h2 className="text-3xl font-bold text-blue-800 mb-6">About Me</h2>
+              <img
+                src="c:\Users\jekugabrandon\Downloads\c546427b9c5f63c8dd1ebdf42b9f5c4b (1).png"
+                alt="Jekuga Brandon's Profile Picture"
+                className="w-48 h-48 sm:w-64 sm:h-64 rounded-full object-cover mx-auto mb-6"
+              />
+              <p className="text-gray-600 mb-4">
+                I'm Jekuga Brandon, a software engineering student graduating in July 2025, passionate about data science and healthcare analytics.
+              </p>
+              <div className="space-y-2">
+                <p><strong>Email:</strong> <a href="mailto:jekugabrandon8@gmail.com" className="text-blue-600 hover:underline">jekugabrandon8@gmail.com</a></p>
+                <p><strong>Contact:</strong> <a href="tel:+237670563567" className="text-blue-600 hover:underline">+237670563567</a></p>
+                <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/jekuga-brandon-70996b267/" className="text-blue-600 hover:underline">View Profile</a></p>
+                <p><strong>GitHub:</strong> <a href="https://github.com/yourusername" className="text-blue-600 hover:underline">View Profile</a> {/* Replace 'yourusername' with your GitHub username */}</p>
+              </div>
+            </div>
+          </section>
+
+          {/* Footer */}
+          <footer className="bg-blue-800 text-white py-4 text-center">
+            <p>© 2025 Jekuga Brandon. All rights reserved.</p>
+          </footer>
+        </div>
+      );
+    }
+
+    // Render the App
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+  </script>
+
+  <style>
+    /* Custom Animation */
+    .animate-fade-in {
+      animation: fadeIn 1s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</body>
+</html>

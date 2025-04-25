@@ -1,0 +1,82 @@
+body {
+    scroll-behavior: smooth;
+    background-color: #f7fafc; /* Soft white */
+  }
+  
+  input, textarea {
+    transition: all 0.3s ease;
+  }
+  
+  input:focus, textarea:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+  }
+  
+  .project-card {
+    transition: transform 0.3s ease, opacity 0.5s ease;
+    opacity: 0;
+    animation: fadeIn 0.5s forwards;
+  }
+  
+  .project-card:nth-child(1) { animation-delay: 0.1s; }
+  .project-card:nth-child(2) { animation-delay: 0.2s; }
+  
+  #visualizations {
+    opacity: 0;
+    animation: fadeIn 0.5s forwards;
+    animation-delay: 0.3s;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  /* Healthcare-inspired colors */
+  nav, footer { background-color: #1e40af; } /* Deep blue */
+  h2, h3 { color: #1e40af; }
+  a:hover { color: #10b981; } /* Soft green */
+  
+  /* Mobile Menu Styles */
+  #mobile-menu.active {
+    display: block;
+  }
+  
+  #mobile-menu a {
+    padding: 0.5rem 0;
+    font-size: 1.1rem;
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 640px) {
+    nav {
+      padding: 0 1rem;
+    }
+  
+    h2 {
+      font-size: 1.5rem;
+    }
+  
+    h3 {
+      font-size: 1.25rem;
+    }
+  
+    button, a.inline-block {
+      padding: 0.5rem 1rem;
+      font-size: 0.9rem;
+    }
+  
+    .project-card img {
+      height: 10rem;
+    }
+  
+    #readmissionChart {
+      max-height: 16rem;
+    }
+  }
+  
+  @media (min-width: 640px) {
+    .project-card img {
+      height: 12rem;
+    }
+  }

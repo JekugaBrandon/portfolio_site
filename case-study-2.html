@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Case study: Predictive Patient Readmission Model by Jekuga Brandon">
+  <meta name="keywords" content="data science, healthcare analytics, machine learning, patient readmission">
+  <meta name="author" content="Jekuga Brandon">
+  <title>Case Study: Predictive Patient Readmission Model</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css">
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-YOUR-GA4-ID"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-YOUR-GA4-ID');
+  </script>
+  <!-- Hotjar Tracking Code -->
+  <script>
+    (function(h,o,t,j,a,r){
+      h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+      h._hjSettings={hjid:YOUR-HOTJAR-ID,hjsv:6};
+      a=o.getElementsByTagName('head')[0];
+      r=o.createElement('script');r.async=1;
+      r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+      a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+  </script>
+</head>
+<body class="bg-gray-50 font-sans">
+  <nav class="bg-white shadow-md fixed w-full z-10" role="navigation" aria-label="Main navigation">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16">
+        <div class="flex items-center">
+          <h1 class="text-2xl font-bold text-blue-800">Jekuga Brandon</h1>
+        </div>
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex items-center space-x-4">
+          <a href="index.html#home" class="text-gray-700 hover:text-blue-600">Home</a>
+          <a href="index.html#projects" class="text-gray-700 hover:text-blue-600">Projects</a>
+          <a href="index.html#about" class="text-gray-700 hover:text-blue-600">About</a>
+          <a href="index.html#contact" class="text-gray-700 hover:text-blue-600">Contact</a>
+        </div>
+        <!-- Mobile Menu Button -->
+        <div class="md:hidden flex items-center">
+          <button id="mobile-menu-button" class="text-gray-700 hover:text-blue-600 focus:outline-none" aria-label="Toggle navigation menu" aria-expanded="false">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white shadow-md">
+      <div class="px-4 pt-2 pb-4 space-y-2">
+        <a href="index.html#home" class="block text-gray-700 hover:text-blue-600">Home</a>
+        <a href="index.html#projects" class="block text-gray-700 hover:text-blue-600">Projects</a>
+        <a href="index.html#about" class="block text-gray-700 hover:text-blue-600">About</a>
+        <a href="index.html#contact" class="block text-gray-700 hover:text-blue-600">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="py-12 sm:py-20 bg-white mt-16" role="main">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="text-3xl sm:text-4xl font-bold text-blue-800">Predictive Patient Readmission Model</h1>
+      <img src="https://via.placeholder.com/800x400?text=Readmission+Model" alt="Predictive Readmission Model Visualization" class="mt-6 w-full rounded-lg" loading="lazy">
+      <div class="mt-8 prose prose-lg text-gray-600">
+        <h2>Problem Statement</h2>
+        <p>Hospital readmissions within 30 days are costly and often preventable. Identifying at-risk patients can optimize resource allocation and improve care.</p>
+        
+        <h2>Methodology</h2>
+        <p>Used a logistic regression model trained on EHR data, including demographics, diagnoses, and prior admissions. Applied feature engineering to create risk scores and used cross-validation to ensure robustness.</p>
+        
+        <h2>Tech Stack</h2>
+        <ul>
+          <li>Python (Pandas, Scikit-learn)</li>
+          <li>Jupyter Notebook</li>
+          <li>SQL for data extraction</li>
+        </ul>
+        
+        <h2>Impact</h2>
+        <p>Reduced readmission rates by 10% in a pilot study, saving an estimated $500,000 annually for the hospital.</p>
+        
+        <h2>Visuals</h2>
+        <img src="https://via.placeholder.com/600x400?text=ROC+Curve" alt="ROC Curve for Readmission Model" class="w-full rounded-lg" loading="lazy">
+      </div>
+      <a href="index.html#projects" class="mt-8 inline-block bg-blue-600 text-white px-4 py-2 sm:px-6 sm:py-3 rounded-lg font-semibold hover:bg-blue-700">Back to Projects</a>
+    </div>
+  </section>
+</body>
+</html>
